@@ -1,8 +1,11 @@
+import { ThemeProvider } from './styles/ThemeProvider';
+import defaultTheme from './styles/defaultTheme';
+
 function App() {
   return (
-    <>
-      <h1>hello world!</h1>
-    </>
+    <ThemeProvider theme={defaultTheme}>
+      <h1>Hello World</h1>
+    </ThemeProvider>
   );
 }
 
