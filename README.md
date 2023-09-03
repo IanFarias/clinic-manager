@@ -13,13 +13,14 @@
 >
 > - `[RECOMENDADO]` instale em sua máquina o ambiente de desenvolvimento - [IntelliJ Idea](https://www.jetbrains.com/pt-br/idea/download/)
 
-<p>
+
 Entre no diretório 'clinic-manager-api' e abra o projeto no IntelliJ, automaticamente a ferramenta Maven, deve buscar e atualizar todas as dependências, 
 mas caso isso não ocorra, vá na aba **View -> Tool Windows -> Maven -> LifeCycle -> Install**, para caso, fique faltando algo, seja instalado.
   
-> Configure as variáveis de ambiente do projeto no IntelliJ em Application -> EditConfigurations -> Environment variables**  OU em modify run configuration em Run:
+> Configure as variáveis de ambiente do projeto no IntelliJ em **Application -> EditConfigurations -> Environment variables**  OU em modify run configuration em Run:
 
-![Alt text](image.png)
+![image](https://github.com/IanFarias/clinic-manager/assets/64112672/f6776c7a-da95-4b61-886b-e5862448f663)
+
 
 ```
     DB_USER=<usuario do banco>;
@@ -32,7 +33,7 @@ Com as variáveis de ambiente configuradas, a aplicação poderá ser iniciado. 
 Para rodar a aplicação, encontre o arquivo: `ClinicmanagerApplication.java` e clique em Run (➥ / ▷)
 Por padrão, a aplicação ira rodar nessa URL: http://localhost:8080/api
 
-</p>
+
 <br/>
 
 ### - RODAR APP:
