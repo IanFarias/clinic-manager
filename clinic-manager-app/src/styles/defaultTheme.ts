@@ -8,9 +8,9 @@ const defaultTheme: ITheme = {
   },
 
   colors: {
-    primary: '#a2edcf',
-    secondary: '#f19ca3',
-    terciary: '#c4ee88',
+    primary: '#F19CA3',
+    secondary: '#C7B7D1',
+    terciary: '#63BAC9',
 
     lightPurple: '#c7b7d1',
     lightYellow: '#fffec8',

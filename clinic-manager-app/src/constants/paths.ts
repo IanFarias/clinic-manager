@@ -1,4 +1,4 @@
 export const SCREEN_PATHS = {
-  home: '/',
+  initial: '/',
   login: '/login',
 };
