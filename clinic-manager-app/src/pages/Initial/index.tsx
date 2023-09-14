@@ -1,3 +1,5 @@
+import * as S from './styles';
+
 const Initial: React.FC = () => {
   return (
     <div>
