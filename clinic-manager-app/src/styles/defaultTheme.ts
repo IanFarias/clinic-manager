@@ -25,6 +25,12 @@ const defaultTheme: ITheme = {
 
     success: '#008732',
 
+    hover: {
+      primary: '#be787e',
+      secondary: '#847091',
+      terciary: '#437b85',
+    },
+
     grey: {
       100: '#AAAAAA',
       200: '#575757',
