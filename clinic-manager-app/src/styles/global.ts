@@ -4,7 +4,7 @@ const GlobalStyle = createGlobalStyle`
 
   :root {
     --text: #575757;
-    --font-family: 'Inter', sans-serif;
+    --font-family: 'Nunito', sans-serif;
   }
 
   * {
@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     background-color: ${({ theme }) => theme.colors.background};
-    
+    overflow: hidden;
   }
 
   ul, ol, li {

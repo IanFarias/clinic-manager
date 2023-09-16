@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes } from 'react';
 import { css, styled } from 'styled-components';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant: 'primary' | 'secondary' | 'iconButton';
+  variant: 'primary' | 'secondary' | 'terciary' | 'iconButton';
   height?: number;
   width?: number;
 }
@@ -14,6 +14,10 @@ const BUTTON_VARIANTS = {
   `,
   secondary: css`
     background-color: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.white};
+  `,
+  terciary: css`
+    background-color: ${({ theme }) => theme.colors.terciary};
     color: ${({ theme }) => theme.colors.white};
   `,
   iconButton: css``,
