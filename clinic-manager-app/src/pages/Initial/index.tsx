@@ -10,20 +10,22 @@ const Initial: React.FC = () => {
   return (
     <S.Container>
       <h1>Bem-Vindo!</h1>
-
-      <img className="logo" src={clinica_icon} />
-
+      <img
+        className="logo"
+        src={clinica_icon}
+        alt="Clinica Caracol desenvolvimento infantil e integração sensorial"
+      />
       <Link variant="button" variantButton="terciary" to="/login">
         Entrar
       </Link>
       <S.PuzzlePiecesConteiner>
-        <img src={peca_vermelha} className="piece_red" alt="" />
-        <img src={preca_amarela} className="piece_yellow" alt="" />
-        <img src={peca_verde} className="piece_green" alt="" />
+        <img src={peca_vermelha} className="piece_red" alt="" aria-hidden />
+        <img src={preca_amarela} className="piece_yellow" alt="" aria-hidden />
+        <img src={peca_verde} className="piece_green" alt="" aria-hidden />
       </S.PuzzlePiecesConteiner>
 
-      <img src={trail} alt="" className="trailTop" />
-      <img src={trail} alt="" className="trailBottom" />
+      <img src={trail} alt="" className="trailTop" aria-hidden />
+      <img src={trail} alt="" className="trailBottom" aria-hidden />
     </S.Container>
   );
 };
