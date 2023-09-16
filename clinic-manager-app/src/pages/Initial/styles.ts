@@ -56,6 +56,22 @@ export const Container = styled.main`
     position: absolute;
     z-index: -1;
   }
+
+  img.trailTop,
+  img.trailBottom {
+    position: absolute;
+    z-index: -1;
+  }
+
+  img.trailTop {
+    top: -83px;
+    left: -67%;
+  }
+
+  img.trailBottom {
+    bottom: 0;
+    right: -50%;
+  }
 `;
 
 export const PuzzlePiecesConteiner = styled.div`
