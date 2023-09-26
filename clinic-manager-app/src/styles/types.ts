@@ -13,6 +13,12 @@ export interface IDefaultTheme {
     lightPurple: string;
     lightYellow: string;
 
+    hover: {
+      primary: string;
+      secondary: string;
+      terciary: string;
+    };
+
     background: string;
 
     text: string;

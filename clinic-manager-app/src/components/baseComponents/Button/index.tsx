@@ -5,7 +5,7 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode;
   onClick?: () => void;
   isDisabled?: boolean;
-  variant?: 'primary' | 'secondary' | 'iconButton';
+  variant?: 'primary' | 'secondary' | 'terciary' | 'iconButton';
   height?: number;
   width?: number;
 };

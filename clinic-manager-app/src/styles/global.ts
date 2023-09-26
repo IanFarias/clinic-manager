@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     background-color: ${({ theme }) => theme.colors.background};
-    
+    overflow: hidden;
   }
 
   ul, ol, li {
