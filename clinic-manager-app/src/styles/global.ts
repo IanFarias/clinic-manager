@@ -4,7 +4,7 @@ const GlobalStyle = createGlobalStyle`
 
   :root {
     --text: #575757;
-    --font-family: 'Inter', sans-serif;
+    --font-family: 'Nunito', sans-serif;
   }
 
   * {
