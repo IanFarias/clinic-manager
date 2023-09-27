@@ -13,7 +13,7 @@ const defaultTheme: ITheme = {
     terciary: '#63BAC9',
 
     lightPurple: '#c7b7d1',
-    lightYellow: '#fffec8',
+    lightYellow: '#fffd93',
 
     background: '#FFFFFF',
 
