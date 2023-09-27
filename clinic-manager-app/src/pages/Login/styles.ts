@@ -7,14 +7,41 @@ export const Container = styled.main`
     display: flex;
     max-width: 35%;
     align-items: center;
+    flex-direction: column;
+    gap: 60px;
 
     h2{
         text-transform: uppercase;
         letter-spacing: 3px;
+        color: ${({theme}) => theme.colors.title};
+        font-size: 2.8rem;
     }
 
     button {
-        max-width: 150px;
+        max-width: 200px;
+    }
+
+    img.logo {
+        max-width: 325px;
+        max-height: 70px;
+        margin-top: 20px;
+    }
+
+    img.trailTop,
+    img.trailBottom {
+        position: absolute;
+        z-index: -1;
+        rotate: 66deg;
+    }
+
+    img.trailTop {
+        top: -66px;
+        left: 77%;
+    }
+
+    img.trailBottom {
+        bottom: -63px;
+        left: 0;
     }
 `;
 
@@ -27,9 +54,18 @@ export const Form = styled.form`
     align-items: center;
     flex-direction: column;
     gap: 40px;
-    padding: 20px 0 60px 0;
+`;
+
+export const FormContainer = styled.div`
+    background-color: ${({theme}) => theme.colors.lightYellow};
+    border-radius: 13px;
+    width: 100%;
+    padding: 40px 0 60px 0;
 `;
 
 export const InputContainer = styled.div`
-    width: 50%;
+    width: 65%;
+    label{
+        font-weight: bold;
+    }
 `;
