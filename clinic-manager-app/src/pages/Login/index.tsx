@@ -15,7 +15,7 @@ const Login: React.FC = () => {
   const handleClick = async (event: any) => {
     event.preventDefault();
     try {
-      await login({ login: 'ianfariaspaixao14@gmail.com', password: '1234' });
+      await login({ login: '', password: '' });
 
       return navigate(SCREEN_PATHS.home);
     } catch (error) {
