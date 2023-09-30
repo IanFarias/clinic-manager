@@ -3,7 +3,7 @@ import * as S from './styles';
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode;
-  onClick?: () => void;
+
   isDisabled?: boolean;
   variant?: 'primary' | 'secondary' | 'terciary' | 'iconButton';
   height?: number;

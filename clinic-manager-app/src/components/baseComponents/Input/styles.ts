@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 interface ContainerProps {
   height?: number;
-  readonly?: boolean;
+  readOnly?: boolean;
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -23,7 +23,7 @@ export const Container = styled.div<ContainerProps>`
       #575757 0px 0px 0px 4px;
   }
 
-  background-color: ${({ readonly }) => (readonly ? '#dfdfdf' : '#fbfbfb')};
+  background-color: ${({ readOnly }) => (readOnly ? '#dfdfdf' : '#fbfbfb')};
 `;
 
 export const Input = styled.input`

@@ -11,14 +11,26 @@ const BUTTON_VARIANTS = {
   primary: css`
     background-color: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.white};
+
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.hover.primary};
+    }
   `,
   secondary: css`
     background-color: ${({ theme }) => theme.colors.secondary};
     color: ${({ theme }) => theme.colors.white};
+
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.hover.secondary};
+    }
   `,
   terciary: css`
     background-color: ${({ theme }) => theme.colors.terciary};
     color: ${({ theme }) => theme.colors.white};
+
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.hover.terciary};
+    }
   `,
   iconButton: css``,
 };
