@@ -15,7 +15,7 @@ export type User = {
 
 interface AuthContextData {
   user: User | null;
-  login: (data: AuthData) => void;
+  login: (data: AuthData) => Promise<void>;
   logout: () => void;
 }
 

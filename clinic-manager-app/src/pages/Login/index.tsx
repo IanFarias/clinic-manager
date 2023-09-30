@@ -12,16 +12,17 @@ const Login: React.FC = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  function handleClick(event: any) {
+  const handleClick = async (event: any) => {
     event.preventDefault();
     try {
-      login({ login: '', password: '' });
+      await login({ login: 'ianfariaspaixao14@gmail.com', password: '1234' });
+
       return navigate(SCREEN_PATHS.home);
     } catch (error) {
       /* Tratar Erro  */
       console.log(error);
     }
-  }
+  };
 
   return (
     <>
