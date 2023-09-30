@@ -26,8 +26,10 @@ public class AuthenticationController {
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
-        var token = tokenService.generateToken((User) auth.getPrincipal());
+        var user = (User) auth.getPrincipal();
 
-        return ResponseEntity.ok(new LoginResponseDTO(token));
+        var token = tokenService.generateToken(user);
+
+        return ResponseEntity.ok(new LoginResponseDTO( user.getId(),user.getRole(), token ));
     }
 }
