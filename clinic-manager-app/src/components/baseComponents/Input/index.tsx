@@ -22,7 +22,7 @@ const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     return (
-      <S.Container height={height} readonly={readOnly}>
+      <S.Container height={height} readOnly={readOnly}>
         <S.Input id={id} type={type} {...props} readOnly={readOnly} ref={ref} />
       </S.Container>
     );
