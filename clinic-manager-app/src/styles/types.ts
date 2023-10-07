@@ -10,8 +10,9 @@ export interface IDefaultTheme {
     secondary: string;
     terciary: string;
 
-    lightPurple: string;
+    lightGreen: string;
     lightYellow: string;
+    darkBlue: string;
 
     hover: {
       primary: string;

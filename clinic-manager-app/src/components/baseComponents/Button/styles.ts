@@ -32,7 +32,11 @@ const BUTTON_VARIANTS = {
       background-color: ${({ theme }) => theme.colors.hover.terciary};
     }
   `,
-  iconButton: css``,
+  iconButton: css`
+    width: auto;
+    height: auto;
+    background: transparent;
+  `,
 };
 
 export const Button = styled.button<Props>`
@@ -52,6 +56,6 @@ export const Button = styled.button<Props>`
 
   ${({ variant }) => BUTTON_VARIANTS[variant]}
 
-  ${({ height }) => (height ? `height:${height}px` : '')}
-  ${({ width }) => (width ? `width:${width}px` : '')}
+  ${({ height }) => (height ? `height:${height}px` : '')};
+  ${({ width }) => (width ? `width:${width}px` : '')};
 `;
