@@ -1,9 +1,10 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import Button from '../baseComponents/Button';
 import Icon from '../Icon';
 import Link from '../baseComponents/Link';
 import clinica_icon_small from '../../assets/clinica_icon_small.png';
+import MenuHamburguer from '../MenuHamburguer';
 import * as S from './styles';
 
 const NAV_LINKS = [
@@ -36,9 +37,12 @@ const SideBar: React.FC<Props> = ({ isOpen, handleMenu }) => {
             src={clinica_icon_small}
             alt="Clinica Caracol desenvolvimento infantil e integração sensorial"
           />
-          <button onClick={handleMenu} className="button-hamburguer">
-            open
-          </button>
+
+          <MenuHamburguer
+            isOpen={isOpen}
+            onClick={handleMenu}
+            className="button-hamburguer"
+          />
         </S.NavHeader>
         <S.List>
           {NAV_LINKS.map((item, index) => {
@@ -65,7 +69,7 @@ const SideBar: React.FC<Props> = ({ isOpen, handleMenu }) => {
               {user?.user}
             </span>
             <span>
-              {user?.role === 'ADMIN' ? 'Administrador' : 'Professional'}
+              {user?.role === 'ADMIN' ? 'Administrador' : 'Profissional'}
             </span>
           </S.Credentials>
         </S.User>
