@@ -1,20 +1,13 @@
-import { useState } from 'react';
-import SideBar from '../../components/Sidebar';
+import PageWrapper from '../../components/PageWrapper';
+import * as S from './styles';
 
 const Home: React.FC = () => {
-  const [open, setOpen] = useState(false);
-
-  const handleMenu = () => {
-    setOpen(!open);
-  };
-
   return (
-    <>
-      <SideBar isOpen={open} handleMenu={handleMenu} />
-      <main>
+    <PageWrapper>
+      <S.Main>
         <h1>Home</h1>
-      </main>
-    </>
+      </S.Main>
+    </PageWrapper>
   );
 };
 

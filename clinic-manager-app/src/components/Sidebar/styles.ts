@@ -34,6 +34,11 @@ export const Nav = styled.nav<Props>`
             pointer-events: none;
           }
 
+          & ~ div {
+            left: 94px;
+            width: calc(100% - 94px);
+          }
+
           button.button-hamburguer {
             left: 10%;
             transition: all 0.3s ease-in-out;
