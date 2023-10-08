@@ -7,6 +7,11 @@ import clinica_icon_small from '../../assets/clinica_icon_small.png';
 import MenuHamburguer from '../MenuHamburguer';
 import * as S from './styles';
 
+/*
+  ADICIONAR LOGICA APARECER APENAS OPÇÕES QUE O USUÁRIO TEM ACESSO
+
+*/
+
 const NAV_LINKS = [
   { path: '#', name: 'Pacientes', icon: 'patient', isAdmin: false },
   { path: '#', name: 'Profissionais', icon: 'professional', isAdmin: true },
