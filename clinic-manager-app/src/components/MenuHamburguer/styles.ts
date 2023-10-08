@@ -14,7 +14,7 @@ export const HamburguerButton = styled.button<Props>`
   flex-direction: column;
   align-items: center;
   border: none;
-  gap: 6px;
+  gap: 8px;
 
   ::after {
     content: '';
@@ -40,7 +40,7 @@ export const HamburguerButton = styled.button<Props>`
 
             &.bar:nth-child(3) {
               transform: rotate(-45deg);
-              top: -6px;
+              top: -7px;
             }
           `
         : ''}
@@ -51,7 +51,7 @@ export const Bar = styled.div`
   position: relative;
   display: block;
   width: 30px;
-  height: 3px;
+  height: 2px;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 10px;
   transition: 0.4s;
