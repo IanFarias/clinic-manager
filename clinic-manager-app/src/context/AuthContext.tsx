@@ -9,6 +9,7 @@ interface AuthProviderProps {
 
 export type User = {
   id: string;
+  user: string;
   role: string;
   token: string;
 };

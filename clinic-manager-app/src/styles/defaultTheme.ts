@@ -12,8 +12,9 @@ const defaultTheme: ITheme = {
     secondary: '#C7B7D1',
     terciary: '#63BAC9',
 
-    lightPurple: '#c7b7d1',
+    lightGreen: '#C4EE88',
     lightYellow: '#fffd93',
+    darkBlue: '#4f9eac',
 
     background: '#FFFFFF',
 
