@@ -8,7 +8,7 @@ export const Nav = styled.nav<Props>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
+  min-height: 100vh;
   width: ${({ $isOpen }) => ($isOpen ? '250px' : '94px')};
   position: fixed;
   left: 0;
@@ -16,7 +16,7 @@ export const Nav = styled.nav<Props>`
   z-index: 100;
   border-radius: 0px 10px 10px 0px;
   background-color: ${({ theme }) => theme.colors.terciary};
-  box-shadow: 2px 4px 17px ${({ theme }) => theme.colors.grey[100]};
+  box-shadow: 0px 0px 20px ${({ theme }) => theme.colors.grey[100]};
 
   transition: all 0.3s ease-in-out;
 
@@ -124,6 +124,10 @@ export const NavFooter = styled.div<Props>`
           }
         `
       : null}
+
+  button:hover {
+    background-color: ${({ theme }) => theme.colors.terciary};
+  }
 `;
 
 export const User = styled.div`
