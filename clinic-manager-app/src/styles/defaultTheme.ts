@@ -25,6 +25,7 @@ const defaultTheme: ITheme = {
     black: '#000000',
 
     success: '#008732',
+    error: '#ea5455',
 
     hover: {
       primary: '#be787e',
