@@ -29,6 +29,7 @@ export interface IDefaultTheme {
     black: string;
 
     success: string;
+    error: string;
 
     grey: {
       100: string;
