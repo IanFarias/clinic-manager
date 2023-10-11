@@ -111,7 +111,7 @@ const RegisterPatient: React.FC = () => {
                 <tr className="grey">
                   <td>João da Silva</td>
                   <td>99999999999</td>
-                  <td>MÃE</td>
+                  <td>PAI</td>
                   <td>Principal</td>
                   <td>51999999999</td>
                   <td className="options-column">
