@@ -5,6 +5,7 @@ import PrivateRoutes from './PrivateRoutes';
 import Initial from '../pages/Initial';
 import Login from '../pages/Login';
 import Home from '../pages/Home';
+import RegisterPatient from '../pages/RegisterPatient';
 
 const Routes: React.FC = () => {
   return (
@@ -14,6 +15,10 @@ const Routes: React.FC = () => {
       <Route element={<PrivateRoutes />}>
         {/* ADD PRIVATE ROUTES HERE */}
         <Route path={SCREEN_PATHS.home} element={<Home />} />
+        <Route
+          path={SCREEN_PATHS.registerPatient}
+          element={<RegisterPatient />}
+        />
       </Route>
     </Switch>
   );
