@@ -3,13 +3,12 @@ package br.edu.ifrs.canoas.clinicmanager.clinicmanager.mapper;
 import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.address.Address;
 import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.guardian.Guardian;
 import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.patient.Patient;
+import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.patient.PatientResponseDTO;
 import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.patient.PatientRegisterDTO;
 
-import java.security.Guard;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class PatientMapper {
@@ -28,5 +27,12 @@ public class PatientMapper {
         patient.setAddress(address);
         patient.setGuardians(patientDto.listGuardian().stream().map(GuardianMapper::fromDtoToEntity).collect(Collectors.toList()));
         return patient;
+    }
+    public static PatientResponseDTO fromEntityToDto(Patient patient){
+        Optional<Guardian> mainGuardian = patient.getGuardians().stream().filter(Guardian::isMain).findFirst();
+        if(mainGuardian.isEmpty()){
+            mainGuardian = patient.getGuardians().stream().findFirst();
+        }
+        return new PatientResponseDTO(patient.getId(), patient.getName(), patient.getAge(), GuardianMapper.fromEntityToDto(mainGuardian.get()));
     }
 }
