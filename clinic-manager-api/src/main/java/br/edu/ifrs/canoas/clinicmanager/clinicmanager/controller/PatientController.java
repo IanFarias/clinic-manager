@@ -3,6 +3,7 @@ package br.edu.ifrs.canoas.clinicmanager.clinicmanager.controller;
 import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.patient.PatientResponseDTO;
 import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.patient.PatientRegisterDTO;
 import br.edu.ifrs.canoas.clinicmanager.clinicmanager.service.PatientService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,6 +22,7 @@ public class PatientController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @Transactional
     public void register(@RequestBody PatientRegisterDTO patientDto){
         service.registerPatient(patientDto);
     }

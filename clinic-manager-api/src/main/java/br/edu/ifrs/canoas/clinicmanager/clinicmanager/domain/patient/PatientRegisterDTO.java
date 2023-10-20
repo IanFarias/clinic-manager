@@ -7,5 +7,6 @@ import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.guardian.GuardianDT
 import java.time.LocalDate;
 import java.util.List;
 
-public record PatientRegisterDTO(String name, LocalDate birthdate, AddressDTO address, List<GuardianDTO> listGuardian) {
+public record PatientRegisterDTO(String name, LocalDate birthdate,
+                                 AddressDTO address, List<GuardianDTO> listGuardian, String observation) {
 }

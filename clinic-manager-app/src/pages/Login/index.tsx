@@ -11,17 +11,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import InputError from '../../components/baseComponents/InputError';
 import * as S from './styles';
+import { dataFormat } from '../../constants/types';
 
 type FormData = {
   login: string;
   password: string;
 };
-
-interface dataFormat {
-  [key: string]: {
-    [key: string]: string;
-  };
-}
 
 const formErrors: dataFormat = {
   login: {

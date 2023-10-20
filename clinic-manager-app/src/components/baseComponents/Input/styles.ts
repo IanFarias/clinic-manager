@@ -14,7 +14,7 @@ export const Container = styled.div<ContainerProps>`
   position: relative;
 
   padding: 0 5px;
-  border-radius: 5px;
+  border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.colors.grey[100]};
 
   &:focus-within {
@@ -23,7 +23,8 @@ export const Container = styled.div<ContainerProps>`
       #575757 0px 0px 0px 4px;
   }
 
-  background-color: ${({ readOnly }) => (readOnly ? '#dfdfdf' : '#fbfbfb')};
+  background-color: ${({ readOnly, theme }) =>
+    readOnly ? '#dfdfdf' : theme.colors.white};
 `;
 
 export const Input = styled.input`

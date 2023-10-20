@@ -45,5 +45,6 @@ public class Patient {
     @Column
     private LocalDateTime updated_at;
 
-
+    @Column
+    private String observation;
 }
