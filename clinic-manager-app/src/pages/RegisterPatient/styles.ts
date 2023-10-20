@@ -53,12 +53,34 @@ export const InputContainer = styled.div`
   }
 `;
 
+export const TextareaContainer = styled.div`
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 500px;
+    max-width: 500px;
+
+    font-weight: bold;
+    color: ${({ theme }) => theme.colors.title};
+
+    textarea {
+      resize: none;
+      height: 100px;
+    }
+  }
+`;
+
 export const GuardianFieldset = styled.fieldset`
   border: none;
   display: flex;
   margin: 0 auto;
   max-width: 90%;
-  margin-top: 60px;
+  margin-top: 40px;
   flex-direction: column;
 
   legend {
