@@ -26,6 +26,7 @@ public class PatientMapper {
         patient.setAge(Period.between(patientDto.birthdate(), LocalDate.now()).getYears());
         patient.setAddress(address);
         patient.setGuardians(patientDto.listGuardian().stream().map(GuardianMapper::fromDtoToEntity).collect(Collectors.toList()));
+        patient.setObservation(patientDto.observation());
         return patient;
     }
     public static PatientResponseDTO fromEntityToDto(Patient patient){
@@ -33,6 +34,7 @@ public class PatientMapper {
         if(mainGuardian.isEmpty()){
             mainGuardian = patient.getGuardians().stream().findFirst();
         }
-        return new PatientResponseDTO(patient.getId(), patient.getName(), patient.getAge(), GuardianMapper.fromEntityToDto(mainGuardian.get()));
+        return new PatientResponseDTO(patient.getId(), patient.getName(),
+                patient.getAge(), GuardianMapper.fromEntityToDto(mainGuardian.get()), patient.getObservation());
     }
 }

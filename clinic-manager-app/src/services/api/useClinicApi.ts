@@ -1,6 +1,7 @@
-import { useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 import { useHttp } from './base/useHttp';
-import { User } from '../../context/AuthContext';
+import { AuthContext, User } from '../../context/AuthContext';
+import { PatientDTO } from '../dtos';
 
 export type AuthData = {
   login: string;
@@ -9,10 +10,15 @@ export type AuthData = {
 
 interface IRoutes {
   auth: (authData: AuthData) => Promise<User>;
+  registerPatient: (patient: PatientDTO) => Promise<PatientDTO>;
 }
 
 export const useClinicApi = () => {
+  const { user } = useContext(AuthContext);
+  const userToken = user?.token || '';
+
   const httpInstance = useHttp(import.meta.env.VITE_API_URL, {
+    Authorization: userToken,
     'Content-Type': 'application/json',
   });
 
@@ -23,10 +29,15 @@ export const useClinicApi = () => {
     });
   }
 
+  async function registerPatient(patient: PatientDTO) {
+    return await httpInstance.post<PatientDTO>('/patient', patient);
+  }
+
   return useMemo<IRoutes>(
     () =>
       <IRoutes>{
         auth,
+        registerPatient,
       },
     []
   );
