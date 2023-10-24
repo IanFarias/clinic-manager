@@ -1,0 +1,41 @@
+package br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.professional;
+
+import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.appointment.Appointment;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.List;
+
+@Table(name = "professionals")
+@Entity(name = "professionals")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(of = "id")
+public class Professional {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
+
+    @Column
+    private String name;
+
+    @Column
+    private String cpf;
+
+    @Column
+    private String crm;
+
+    @Enumerated(EnumType.STRING)
+    private Specialty specialty;
+
+    @Column
+    private String phone_number;
+
+    @Column
+    private double discount;
+
+    @OneToMany(mappedBy = "professional", cascade = CascadeType.ALL)
+    private List<Appointment> listAppointments;
+}
