@@ -1,6 +1,7 @@
 package br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.patient;
 
 import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.address.Address;
+import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.appointment.Appointment;
 import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.guardian.Guardian;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
@@ -45,6 +46,9 @@ public class Patient {
     @Column
     private LocalDateTime updated_at;
 
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    private List<Appointment> listAppointments;
+  
     @Column
     private String observation;
 }
