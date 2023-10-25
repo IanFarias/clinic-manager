@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const Main = styled.main`
   padding-top: 40px;
+  height: 100vh;
+  overflow: auto;
 `;
 
 export const Title = styled.h1`
@@ -11,7 +13,7 @@ export const Title = styled.h1`
   border-bottom: 3px solid ${({ theme }) => theme.colors.primary};
   padding-bottom: 30px;
   margin: 0 auto;
-  max-width: 20%;
+  width: fit-content;
 `;
 
 export const Form = styled.form`
@@ -19,6 +21,7 @@ export const Form = styled.form`
   margin: 0 auto;
   width: 100%;
   max-width: 80%;
+  margin-bottom: 40px;
 
   .button-register {
     width: 200px;
@@ -82,6 +85,7 @@ export const GuardianFieldset = styled.fieldset`
   max-width: 90%;
   margin-top: 40px;
   flex-direction: column;
+  overflow: auto;
 
   legend {
     font-size: 2rem;
