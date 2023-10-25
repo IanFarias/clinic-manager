@@ -13,3 +13,12 @@ export type PatientDTO = {
   birthdate: string;
   listGuardian: Guardian[];
 };
+
+export type ProfessionalDTO = {
+  name: string;
+  cpf: string;
+  crm: string;
+  phone_number: string;
+  speciality: string;
+  discount: number;
+};

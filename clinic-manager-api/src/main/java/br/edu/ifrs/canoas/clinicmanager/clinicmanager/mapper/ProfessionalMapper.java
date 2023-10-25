@@ -11,7 +11,7 @@ public class ProfessionalMapper {
         professional.setDiscount(dto.discount());
         professional.setCrm(dto.crm());
         professional.setName(dto.name());
-        professional.setSpecialty(dto.specialty());
+        professional.setSpeciality(dto.speciality());
         professional.setPhone_number(dto.phone_number());
         return professional;
     }

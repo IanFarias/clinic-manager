@@ -6,6 +6,7 @@ import Initial from '../pages/Initial';
 import Login from '../pages/Login';
 import Home from '../pages/Home';
 import RegisterPatient from '../pages/RegisterPatient';
+import RegisterProfessional from '../pages/RegisterProfessional';
 
 const Routes: React.FC = () => {
   return (
@@ -18,6 +19,10 @@ const Routes: React.FC = () => {
         <Route
           path={SCREEN_PATHS.registerPatient}
           element={<RegisterPatient />}
+        />
+        <Route
+          path={SCREEN_PATHS.registerProfessional}
+          element={<RegisterProfessional />}
         />
       </Route>
     </Switch>

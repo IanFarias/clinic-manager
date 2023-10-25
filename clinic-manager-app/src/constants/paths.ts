@@ -3,4 +3,5 @@ export const SCREEN_PATHS = {
   login: '/login',
   home: '/home',
   registerPatient: '/patient/register',
+  registerProfessional: '/professional/register',
 };

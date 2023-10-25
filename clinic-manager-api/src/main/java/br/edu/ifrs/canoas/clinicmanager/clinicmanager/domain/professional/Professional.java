@@ -28,7 +28,7 @@ public class Professional {
     private String crm;
 
     @Enumerated(EnumType.STRING)
-    private Specialty specialty;
+    private Speciality speciality;
 
     @Column
     private String phone_number;
