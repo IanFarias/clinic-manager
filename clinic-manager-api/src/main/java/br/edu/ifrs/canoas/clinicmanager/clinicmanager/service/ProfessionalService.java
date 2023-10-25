@@ -23,8 +23,11 @@ public class ProfessionalService {
         Professional newProfessional = ProfessionalMapper.fromDtoToEntity(professionalDTO);
         repository.save(newProfessional);
     }
-
     public Page<ProfessionalResponseDTO> getListProfessionals(Pageable pagination){
         return repository.findAll(pagination).map(ProfessionalMapper::fromEntityToDto);
+    }
+
+    public long getAmountProfessionals(){
+        return repository.count();
     }
 }

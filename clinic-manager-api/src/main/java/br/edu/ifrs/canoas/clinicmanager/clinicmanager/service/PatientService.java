@@ -26,4 +26,8 @@ public class PatientService {
     public Page<PatientResponseDTO> getListPatients(Pageable pagination){
         return repository.findAll(pagination).map(PatientMapper::fromEntityToDto);
     }
+
+    public long getAmountPatients(){
+        return repository.count();
+    }
 }
