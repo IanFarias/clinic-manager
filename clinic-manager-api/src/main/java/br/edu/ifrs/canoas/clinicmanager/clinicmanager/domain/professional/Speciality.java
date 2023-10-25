@@ -1,6 +1,6 @@
 package br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.professional;
 
-public enum Specialty {
+public enum Speciality {
     TO,
     MUSICOTERAPIA,
     PSICOLOGIA,
