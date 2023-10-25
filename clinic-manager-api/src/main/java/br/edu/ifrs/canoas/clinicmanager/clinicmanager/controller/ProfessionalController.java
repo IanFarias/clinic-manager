@@ -24,10 +24,14 @@ public class ProfessionalController {
     public void register(@RequestBody ProfessionalDTO professionalDto){
         service.registerProfessional(professionalDto);
     }
-
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Page<ProfessionalResponseDTO>> getListProfessional(@PageableDefault(sort = "name") Pageable pagination) {
         return ResponseEntity.ok(service.getListProfessionals(pagination));
+    }
+    @GetMapping("getAmount")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Long> getAmountProfessionals(){
+        return ResponseEntity.ok(service.getAmountProfessionals());
     }
 }

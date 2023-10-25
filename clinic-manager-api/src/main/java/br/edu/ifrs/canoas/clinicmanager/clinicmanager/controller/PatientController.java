@@ -32,4 +32,10 @@ public class PatientController {
     public ResponseEntity<Page<PatientResponseDTO>> getListPatients(@PageableDefault(sort = "name")Pageable pagination) {
         return ResponseEntity.ok(service.getListPatients(pagination));
     }
+
+    @GetMapping("getAmount")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Long> getAmountPatients(){
+        return ResponseEntity.ok(service.getAmountPatients());
+    }
 }
