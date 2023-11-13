@@ -11,12 +11,17 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class PatientService {
+public class    PatientService {
     @Autowired
     PatientRepository repository;
+
+    public Optional<Patient> getById(String id){
+        return repository.findById(id);
+    }
 
     public void registerPatient(PatientRegisterDTO patientDto){
         Patient newPatient = PatientMapper.fromDtoToEntity(patientDto);
@@ -27,7 +32,7 @@ public class PatientService {
         return repository.findAll(pagination).map(PatientMapper::fromEntityToDto);
     }
 
-    public long getAmountPatients(){
+    public long getQuantityPatients(){
         return repository.count();
     }
 }
