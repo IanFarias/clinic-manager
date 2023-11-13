@@ -20,11 +20,8 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @Column
-    private String name;
-
-    @Column
-    private LocalDate appointment_date;
+    @Column(name = "appointment_date")
+    private LocalDate appointmentDate;
 
     @Column
     private String payment_type;
@@ -46,4 +43,8 @@ public class Appointment {
     @OneToOne
     @JoinColumn(name = "appointment_type")
     private AppointmentTypes appointmentTypes;
+
+    public boolean isPaid(){
+        return this.payment_date!=null;
+    }
 }

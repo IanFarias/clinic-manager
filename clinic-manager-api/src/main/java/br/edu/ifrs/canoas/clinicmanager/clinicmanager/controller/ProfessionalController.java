@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("professional")
 public class ProfessionalController {
@@ -29,9 +31,15 @@ public class ProfessionalController {
     public ResponseEntity<Page<ProfessionalResponseDTO>> getListProfessional(@PageableDefault(sort = "name") Pageable pagination) {
         return ResponseEntity.ok(service.getListProfessionals(pagination));
     }
-    @GetMapping("getAmount")
+    @GetMapping("getQuantity")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Long> getAmountProfessionals(){
-        return ResponseEntity.ok(service.getAmountProfessionals());
+    public ResponseEntity<Long> getQuantityProfessionals(){
+        return ResponseEntity.ok(service.getQuantityProfessionals());
+    }
+
+    @GetMapping("getRanking")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<List<ProfessionalResponseDTO>> getTop6Professionals(){
+        return ResponseEntity.ok(service.getTop6Professional());
     }
 }

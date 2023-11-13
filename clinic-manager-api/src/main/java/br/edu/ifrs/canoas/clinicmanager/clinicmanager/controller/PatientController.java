@@ -33,9 +33,9 @@ public class PatientController {
         return ResponseEntity.ok(service.getListPatients(pagination));
     }
 
-    @GetMapping("getAmount")
+    @GetMapping("getQuantity")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Long> getAmountPatients(){
-        return ResponseEntity.ok(service.getAmountPatients());
+    public ResponseEntity<Long> getQuantityPatients(){
+        return ResponseEntity.ok(service.getQuantityPatients());
     }
 }
