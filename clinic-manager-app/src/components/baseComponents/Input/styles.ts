@@ -13,7 +13,7 @@ export const Container = styled.div<ContainerProps>`
   align-items: center;
   position: relative;
 
-  padding: 0 5px;
+  padding: 0 14px;
   border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.colors.grey[100]};
 
@@ -33,4 +33,5 @@ export const Input = styled.input`
   height: 100%;
   width: 100%;
   background-color: transparent;
+  font-size: 16px;
 `;

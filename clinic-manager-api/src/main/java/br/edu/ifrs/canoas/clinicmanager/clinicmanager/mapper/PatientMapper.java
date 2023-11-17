@@ -35,6 +35,6 @@ public class PatientMapper {
             mainGuardian = patient.getGuardians().stream().findFirst();
         }
         return new PatientResponseDTO(patient.getId(), patient.getName(),
-                patient.getAge(), GuardianMapper.fromEntityToDto(mainGuardian.get()), patient.getObservation());
+                patient.getAge(), mainGuardian.get().getName());
     }
 }

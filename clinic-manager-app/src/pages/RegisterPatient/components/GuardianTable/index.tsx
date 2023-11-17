@@ -1,11 +1,11 @@
-import { IGuardian } from '../..';
+import { Guardian } from '../..';
 import Icon from '../../../../components/Icon';
 import Button from '../../../../components/baseComponents/Button';
 import VisuallyHidden from '../../../../components/baseComponents/VisuallyHidden';
 import * as S from './styles';
 
 type props = {
-  guardians: IGuardian[];
+  guardians: Guardian[];
   onCickEdit: (cpf: string) => void;
   onClickDelete: (cpf: string) => void;
 };

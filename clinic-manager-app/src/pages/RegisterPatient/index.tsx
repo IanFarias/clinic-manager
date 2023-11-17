@@ -12,6 +12,7 @@ import { dataFormat } from '../../constants/types';
 import { object, string, number } from 'yup';
 import { patientMapper } from '../../services/mappers';
 import { useClinicApi } from '../../services/api/useClinicApi';
+import PageTitle from '../../components/baseComponents/PageTitle';
 import * as S from './styles';
 
 type FormData = {
@@ -144,7 +145,7 @@ const RegisterPatient: React.FC = () => {
   return (
     <PageWrapper>
       <S.Main>
-        <S.Title>Cadastro de Paciente</S.Title>
+        <PageTitle>Cadastro de Paciente</PageTitle>
         <S.Form onSubmit={handleSubmit(onSubmit)}>
           <S.Fieldset>
             <legend>

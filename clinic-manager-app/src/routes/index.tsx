@@ -7,6 +7,7 @@ import Login from '../pages/Login';
 import Home from '../pages/Home';
 import RegisterPatient from '../pages/RegisterPatient';
 import RegisterProfessional from '../pages/RegisterProfessional';
+import Patients from '../pages/Patients';
 
 const Routes: React.FC = () => {
   return (
@@ -24,6 +25,7 @@ const Routes: React.FC = () => {
           path={SCREEN_PATHS.registerProfessional}
           element={<RegisterProfessional />}
         />
+        <Route path={SCREEN_PATHS.patients} element={<Patients />}></Route>
       </Route>
     </Switch>
   );

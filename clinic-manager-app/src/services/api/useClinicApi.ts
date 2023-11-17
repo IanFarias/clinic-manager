@@ -1,7 +1,7 @@
 import { useContext, useMemo } from 'react';
 import { useHttp } from './base/useHttp';
 import { AuthContext, User } from '../../context/AuthContext';
-import { PatientDTO, ProfessionalDTO } from '../dtos';
+import { Page, PatientDTO, PatientListDTO, ProfessionalDTO } from '../dtos';
 
 export type AuthData = {
   login: string;
@@ -14,6 +14,7 @@ interface IRoutes {
   registerProfessional: (
     professional: ProfessionalDTO
   ) => Promise<ProfessionalDTO>;
+  getPatients: (page?: number, size?: number) => Promise<Page<PatientListDTO>>;
 }
 
 export const useClinicApi = () => {
@@ -43,12 +44,19 @@ export const useClinicApi = () => {
     );
   }
 
+  async function getPatients(page: number = 0, size: number = 10) {
+    return await httpInstance.get<Page<PatientListDTO>>(
+      `/patient?page=${page}&size=${size}`
+    );
+  }
+
   return useMemo<IRoutes>(
     () =>
       <IRoutes>{
         auth,
         registerPatient,
         registerProfessional,
+        getPatients,
       },
     []
   );
