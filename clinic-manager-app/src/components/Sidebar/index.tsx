@@ -13,7 +13,7 @@ import * as S from './styles';
 */
 
 const NAV_LINKS = [
-  { path: '#', name: 'Pacientes', icon: 'patient', isAdmin: false },
+  { path: '/patients', name: 'Pacientes', icon: 'patient', isAdmin: false },
   { path: '#', name: 'Profissionais', icon: 'professional', isAdmin: true },
   { path: '#', name: 'Atendimentos', icon: 'appointment', isAdmin: false },
   { path: '#', name: 'Financeiro', icon: 'finance', isAdmin: true },
@@ -53,7 +53,7 @@ const SideBar: React.FC<Props> = ({ isOpen, handleMenu }) => {
           {NAV_LINKS.map((item, index) => {
             return (
               <S.ListItem key={index + '-menu-item'}>
-                <Link to={'#'}>
+                <Link to={item.path}>
                   <Icon size={24} icon={item.icon} />
                   <span>{item.name}</span>
                 </Link>
