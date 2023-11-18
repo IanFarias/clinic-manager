@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useClinicApi } from '../../services/api/useClinicApi';
 import PageWrapper from '../../components/PageWrapper';
 import PageTitle from '../../components/baseComponents/PageTitle';
-import { SCREEN_PATHS } from '../../constants/paths';
 import Link from '../../components/baseComponents/Link';
+import { SCREEN_PATHS } from '../../constants/paths';
 import Input from '../../components/baseComponents/Input';
-import Icon from '../../components/Icon';
 import Button from '../../components/baseComponents/Button';
+import Icon from '../../components/Icon';
 import TableList from '../../components/TableList';
-import { useClinicApi } from '../../services/api/useClinicApi';
 import * as S from './styles';
 
 const columns = [
-  { field: 'name', headerName: 'Paciente' },
-  { field: 'age', headerName: 'Idade' },
-  { field: 'guardian', headerName: 'Responsável' },
+  { field: 'name', headerName: 'Profissional' },
+  { field: 'cpf', headerName: 'CPF' },
+  { field: 'crm', headerName: 'CRM' },
 ];
 
-const Patients: React.FC = () => {
+const Professionals: React.FC = () => {
   const [error, setError] = useState(false);
-  const [patientList, setPatientList] = useState<any[] | null>(null);
-  const { getPatients } = useClinicApi();
+  const [professionalList, setprofessionalList] = useState<any[] | null>(null);
+  const { getProfessionals } = useClinicApi();
 
   const getPatientsData = async () => {
     try {
-      const response = await getPatients();
+      const response = await getProfessionals();
 
-      setPatientList(response.content);
+      setprofessionalList(response.content);
     } catch (error) {
       console.log('error' + error);
       setError(true);
@@ -39,15 +39,15 @@ const Patients: React.FC = () => {
   return (
     <PageWrapper>
       <S.main>
-        <PageTitle>Pacientes</PageTitle>
+        <PageTitle>Profissionais</PageTitle>
 
         <S.Options>
           <Link
-            to={SCREEN_PATHS.registerPatient}
+            to={SCREEN_PATHS.registerProfessional}
             variant="button"
             variantButton="terciary"
           >
-            Novo Paciente
+            Novo Profissional
           </Link>
           <S.InputContainer>
             <Input id="search" placeholder="Buscar..." />
@@ -58,14 +58,14 @@ const Patients: React.FC = () => {
         </S.Options>
         {error && (
           <span style={{ color: 'red' }} role="alert">
-            Erro ao listar pacientes
+            Erro ao listar profissionais
           </span>
         )}
-        {patientList && (
+        {professionalList && (
           <TableList
             columns={columns}
-            rows={patientList}
-            redirect={SCREEN_PATHS.patients}
+            rows={professionalList}
+            redirect={SCREEN_PATHS.professionals}
           />
         )}
       </S.main>
@@ -73,4 +73,4 @@ const Patients: React.FC = () => {
   );
 };
 
-export default Patients;
+export default Professionals;

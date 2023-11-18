@@ -8,6 +8,7 @@ import Home from '../pages/Home';
 import RegisterPatient from '../pages/RegisterPatient';
 import RegisterProfessional from '../pages/RegisterProfessional';
 import Patients from '../pages/Patients';
+import Professionals from '../pages/Professionals';
 
 const Routes: React.FC = () => {
   return (
@@ -26,6 +27,10 @@ const Routes: React.FC = () => {
           element={<RegisterProfessional />}
         />
         <Route path={SCREEN_PATHS.patients} element={<Patients />}></Route>
+        <Route
+          path={SCREEN_PATHS.professionals}
+          element={<Professionals />}
+        ></Route>
       </Route>
     </Switch>
   );

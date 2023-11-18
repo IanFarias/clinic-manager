@@ -14,9 +14,10 @@ type Row = {
 type Props = {
   columns: Column[];
   rows: Row[];
+  redirect: string;
 };
 
-const TableList: React.FC<Props> = ({ columns, rows }) => {
+const TableList: React.FC<Props> = ({ columns, rows, redirect }) => {
   return (
     <S.GuardianTable>
       <thead>
@@ -42,7 +43,7 @@ const TableList: React.FC<Props> = ({ columns, rows }) => {
                 <Link
                   variant="button"
                   variantButton="primary"
-                  to={`/patients/${row['id']}`}
+                  to={`${redirect}/${row['id']}`}
                   aria-label="Acessar"
                 >
                   Acessar
