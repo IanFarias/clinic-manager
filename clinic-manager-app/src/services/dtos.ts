@@ -30,6 +30,12 @@ export type PatientListDTO = {
   guardian: string;
 };
 
+export type ProfessionalListDTO = {
+  name: string;
+  cpf: string;
+  crm: string;
+};
+
 export type Page<T> = {
   content: T[];
   pageable: {

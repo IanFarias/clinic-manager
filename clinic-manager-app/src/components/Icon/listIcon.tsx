@@ -235,4 +235,24 @@ export const listIcon: listIconProps = {
       />
     </svg>
   ),
+  home: (primaryColor: string, size: number) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 32 32"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M27.1353 18.5145V31.9999H19.2702V23.5729H12.7303V31.9999H4.86523V18.5145L16.0003 9.12952L27.1353 18.5145Z"
+        fill="white"
+      />
+      <path
+        d="M0 15.1041L16 1.39856L32 15.1041L30.1381 18.0021L16 5.89138L1.86188 18.0021L0 15.1041Z"
+        fill="white"
+      />
+      <path d="M27.4906 0V8.77147L23.5356 5.38127V0H27.4906Z" fill="white" />
+    </svg>
+  ),
 };

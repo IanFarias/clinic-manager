@@ -17,6 +17,6 @@ public class ProfessionalMapper {
     }
 
     public static ProfessionalResponseDTO fromEntityToDto(Professional professional){
-        return new ProfessionalResponseDTO(professional.getName(), professional.getCpf(), professional.getCrm());
+        return new ProfessionalResponseDTO(professional.getId(), professional.getName(), professional.getCpf(), professional.getCrm());
     }
 }
