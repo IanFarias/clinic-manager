@@ -26,7 +26,21 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     background-color: ${({ theme }) => theme.colors.background};
     overflow: hidden;
-  }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+ 
+    ::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background: #f4f4f4;
+    }
+ 
+    ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: #dad7d7;
+    }
+}
 
   ul, ol, li {
     list-style: none;
