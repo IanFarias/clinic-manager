@@ -31,6 +31,7 @@ export type PatientListDTO = {
 };
 
 export type ProfessionalListDTO = {
+  id: string;
   name: string;
   cpf: string;
   crm: string;

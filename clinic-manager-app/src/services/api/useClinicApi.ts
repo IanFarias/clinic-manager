@@ -25,6 +25,10 @@ interface IRoutes {
     page?: number,
     size?: number
   ) => Promise<Page<ProfessionalListDTO>>;
+  getTopSixProfessionals: () => Promise<ProfessionalListDTO[]>;
+  getNumberOfProfessionals: () => Promise<number>;
+  getNumberOfPatients: () => Promise<number>;
+  getNumberOfAppointments: () => Promise<number>;
 }
 
 export const useClinicApi = () => {
@@ -66,6 +70,24 @@ export const useClinicApi = () => {
     );
   }
 
+  async function getTopSixProfessionals() {
+    return await httpInstance.get<ProfessionalListDTO[]>(
+      '/professional/getRanking'
+    );
+  }
+
+  async function getNumberOfProfessionals() {
+    return await httpInstance.get<number>('/professional/getQuantity');
+  }
+
+  async function getNumberOfPatients() {
+    return await httpInstance.get<number>('/patient/getQuantity');
+  }
+
+  async function getNumberOfAppointments() {
+    return await httpInstance.get<number>('/appointment/getQuantity');
+  }
+
   return useMemo<IRoutes>(
     () =>
       <IRoutes>{
@@ -74,6 +96,10 @@ export const useClinicApi = () => {
         registerProfessional,
         getPatients,
         getProfessionals,
+        getTopSixProfessionals,
+        getNumberOfProfessionals,
+        getNumberOfPatients,
+        getNumberOfAppointments,
       },
     []
   );
