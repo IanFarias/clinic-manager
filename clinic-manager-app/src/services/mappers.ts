@@ -1,4 +1,4 @@
-import { PatientDTO } from './dtos';
+import { PatientDTO, ProfessionalDTO } from './dtos';
 
 type PatientForm = {
   name: string;
@@ -10,12 +10,33 @@ type PatientForm = {
   observation: string;
   complement: string;
   guardians: {
+    id: string;
     name: string;
     relationship: string;
     cpf: string;
     phoneNumber: string;
     isMain: boolean;
   }[];
+};
+
+type PatientFormData = {
+  name: string;
+  birthdate: string;
+  street: string;
+  number: number;
+  city: string;
+  neighborhood: string;
+  observation: string;
+  complement: string;
+};
+
+type ProfessionalFormData = {
+  name: string;
+  cpf: string;
+  crm: string;
+  phone_number: string;
+  speciality: string;
+  discount: number;
 };
 
 export const patientMapper = (data: PatientForm): PatientDTO => {
@@ -31,5 +52,31 @@ export const patientMapper = (data: PatientForm): PatientDTO => {
     observation: data.observation,
     birthdate: data.birthdate,
     listGuardian: data.guardians,
+  };
+};
+
+export const patientToFormData = (data: PatientDTO): PatientFormData => {
+  return {
+    name: data.name,
+    street: data.address.street,
+    number: data.address.number,
+    city: data.address.city,
+    neighborhood: data.address.neighborhood,
+    complement: data.address.complement,
+    observation: data.observation,
+    birthdate: data.birthdate,
+  };
+};
+
+export const professionalToFormData = (
+  data: ProfessionalDTO
+): ProfessionalFormData => {
+  return {
+    name: data.name,
+    cpf: data.cpf,
+    crm: data.crm,
+    phone_number: data.phone_number,
+    speciality: data.speciality,
+    discount: data.discount,
   };
 };

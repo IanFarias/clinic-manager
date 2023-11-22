@@ -1,7 +1,7 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 import SideBar from '../Sidebar';
-import * as S from './styles';
 import { usePersistedState } from '../../utils/usePersistedState';
+import * as S from './styles';
 
 type Props = {
   children: ReactNode;

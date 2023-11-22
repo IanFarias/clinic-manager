@@ -32,7 +32,7 @@ export const useHttp = (
     axiosInstace.post<T>(url, body).then(responseBody);
 
   const update = <T>(url: string, body: {}) =>
-    axiosInstace.post<T>(url, body).then(responseBody);
+    axiosInstace.put<T>(url, body).then(responseBody);
 
   return { get, post, update };
 };

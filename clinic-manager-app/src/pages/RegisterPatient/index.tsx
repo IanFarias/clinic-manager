@@ -3,16 +3,18 @@ import PageWrapper from '../../components/PageWrapper';
 import Button from '../../components/baseComponents/Button';
 import Input from '../../components/baseComponents/Input';
 import VisuallyHidden from '../../components/baseComponents/VisuallyHidden';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import GuardianModal, { FormGuardianData } from './components/GuardianModal';
 import { yupResolver } from '@hookform/resolvers/yup';
 import GuardianTable from './components/GuardianTable';
 import { dataFormat } from '../../constants/types';
 import { object, string, number } from 'yup';
-import { patientMapper } from '../../services/mappers';
+import { patientMapper, patientToFormData } from '../../services/mappers';
 import { useClinicApi } from '../../services/api/useClinicApi';
 import PageTitle from '../../components/baseComponents/PageTitle';
+import { useNavigate, useParams } from 'react-router-dom';
+import { SCREEN_PATHS } from '../../constants/paths';
 import * as S from './styles';
 
 type FormData = {
@@ -27,6 +29,7 @@ type FormData = {
 };
 
 export type Guardian = {
+  id?: string;
   name: string;
   relationship: string;
   cpf: string;
@@ -61,7 +64,10 @@ const RegisterPatient: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [guardianList, setGuardianList] = useState<Guardian[] | []>([]);
   const [editGuardian, setEditGuardian] = useState<Guardian | null>(null);
-  const { registerPatient } = useClinicApi();
+  const [patient, setPatient] = useState<FormData | null>(null);
+  const { id } = useParams();
+  const { registerPatient, findPatientById, updatePatient } = useClinicApi();
+  const navigate = useNavigate();
 
   const handleModal = () => {
     setOpenModal(!openModal);
@@ -84,6 +90,7 @@ const RegisterPatient: React.FC = () => {
     reset,
     formState: { errors },
   } = useForm<FormData>({
+    values: { ...patient } as FormData,
     resolver: yupResolver(formSchema),
   });
 
@@ -92,12 +99,21 @@ const RegisterPatient: React.FC = () => {
 
     const patient = patientMapper({ ...data, guardians: guardianList });
 
-    try {
-      await registerPatient(patient);
-      reset();
-      setGuardianList([]);
-    } catch (error) {
-      console.log(error);
+    if (id) {
+      try {
+        await updatePatient({ ...patient, id });
+        return navigate(SCREEN_PATHS.patients);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      try {
+        await registerPatient(patient);
+        reset();
+        setGuardianList([]);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -142,10 +158,27 @@ const RegisterPatient: React.FC = () => {
     setGuardianList(() => [...updated]);
   };
 
+  const getPatientData = async (id: string) => {
+    try {
+      const response = await findPatientById(id);
+      setGuardianList(response.listGuardian);
+      setPatient(patientToFormData(response));
+    } catch (error) {
+      console.log('error' + error);
+      setError(true);
+    }
+  };
+
+  useEffect(() => {
+    if (id) {
+      getPatientData(id);
+    }
+  }, []);
+
   return (
     <PageWrapper>
       <S.Main>
-        <PageTitle>Cadastro de Paciente</PageTitle>
+        <PageTitle>{id ? 'Editar Paciente' : 'Cadastro de Paciente'}</PageTitle>
         <S.Form onSubmit={handleSubmit(onSubmit)}>
           <S.Fieldset>
             <legend>
@@ -246,7 +279,7 @@ const RegisterPatient: React.FC = () => {
             />
           </S.GuardianFieldset>
           <Button className="button-register" variant="terciary" type="submit">
-            Cadastrar
+            {id ? 'Salvar' : 'Cadastrar'}
           </Button>
           <GuardianModal
             isOpen={openModal}

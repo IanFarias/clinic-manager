@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import PageWrapper from '../../components/PageWrapper';
 import Button from '../../components/baseComponents/Button';
@@ -10,7 +10,10 @@ import VisuallyHidden from '../../components/baseComponents/VisuallyHidden';
 import { dataFormat } from '../../constants/types';
 import InputError from '../../components/baseComponents/InputError';
 import { useClinicApi } from '../../services/api/useClinicApi';
+import { useNavigate, useParams } from 'react-router-dom';
 import * as S from './styles';
+import { professionalToFormData } from '../../services/mappers';
+import { SCREEN_PATHS } from '../../constants/paths';
 
 const SPECIALITY_OPTIONS = [
   'TO',
@@ -21,6 +24,7 @@ const SPECIALITY_OPTIONS = [
 ];
 
 type FormProfessionalData = {
+  id?: string;
   name: string;
   cpf: string;
   crm: string;
@@ -56,8 +60,14 @@ const formErrors: dataFormat = {
 
 const RegisterProfessional: React.FC = () => {
   const [success, setSuccess] = useState(false);
+  const [professional, setProfessional] = useState<FormProfessionalData | null>(
+    null
+  );
+  const navigate = useNavigate();
+  const { id } = useParams();
 
-  const { registerProfessional } = useClinicApi();
+  const { registerProfessional, updateProfessional, findProfessionalById } =
+    useClinicApi();
 
   const ProfessionalSchema = object({
     name: string().trim().required(),
@@ -80,24 +90,51 @@ const RegisterProfessional: React.FC = () => {
     formState: { errors },
   } = useForm<FormProfessionalData>({
     resolver: yupResolver(ProfessionalSchema),
+    values: { ...professional } as FormProfessionalData,
   });
 
   const onSubmit = async (data: FormProfessionalData) => {
     const professional = data;
 
-    try {
-      await registerProfessional(professional);
-      setSuccess((current) => !current);
-      reset();
-    } catch (error) {
-      console.log(error);
+    if (id) {
+      try {
+        await updateProfessional({ ...professional, id });
+        return navigate(SCREEN_PATHS.professionals);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      try {
+        await registerProfessional(professional);
+        setSuccess((current) => !current);
+        reset();
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
+
+  const getProfessionalData = async (id: string) => {
+    try {
+      const response = await findProfessionalById(id);
+      setProfessional(professionalToFormData(response));
+    } catch (error) {
+      console.log('error' + error);
+    }
+  };
+
+  useEffect(() => {
+    if (id) {
+      getProfessionalData(id);
+    }
+  }, []);
 
   return (
     <PageWrapper>
       <S.Main>
-        <S.Title>Cadastrar Profissional</S.Title>
+        <S.Title>
+          {id ? 'Editar Profissional' : 'Cadastrar Profissional'}
+        </S.Title>
         <S.Form onSubmit={handleSubmit(onSubmit)}>
           <S.Fieldset>
             <legend>
