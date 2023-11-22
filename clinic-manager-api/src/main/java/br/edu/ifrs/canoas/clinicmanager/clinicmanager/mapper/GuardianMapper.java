@@ -14,7 +14,19 @@ public class GuardianMapper {
         guardian.setPhoneNumber(guardianDto.phoneNumber());
         return guardian;
     }
-    public static GuardianResponseDTO fromEntityToDto(Guardian guardian){
-        return new GuardianResponseDTO(guardian.getId(),guardian.getName());
+
+    public static Guardian fromDtoResponseToEntity(GuardianResponseDTO guardianDto){
+        Guardian guardian = new Guardian();
+        guardian.setId(guardianDto.id());
+        guardian.setCpf(guardianDto.cpf());
+        guardian.setName(guardianDto.name());
+        guardian.setRelationship(guardianDto.relationship());
+        guardian.setMain(guardianDto.isMain());
+        guardian.setPhoneNumber(guardianDto.phoneNumber());
+        return guardian;
     }
+    public static GuardianResponseDTO fromEntityToDto(Guardian guardian){
+        return new GuardianResponseDTO(guardian.getId(),guardian.getName(), guardian.getCpf(), guardian.getRelationship(), guardian.isMain(), guardian.getPhoneNumber());
+    }
+
 }
