@@ -16,7 +16,11 @@ public class ProfessionalMapper {
         return professional;
     }
 
-    public static ProfessionalResponseDTO fromEntityToDto(Professional professional){
+    public static ProfessionalResponseDTO fromEntityToDtoResponse(Professional professional){
         return new ProfessionalResponseDTO(professional.getId(), professional.getName(), professional.getCpf(), professional.getCrm());
+    }
+
+    public static ProfessionalDTO fromEntityToDto(Professional professional){
+        return new ProfessionalDTO(professional.getId(), professional.getName(), professional.getCpf(), professional.getCrm(), professional.getSpeciality(), professional.getPhone_number(), professional.getDiscount());
     }
 }

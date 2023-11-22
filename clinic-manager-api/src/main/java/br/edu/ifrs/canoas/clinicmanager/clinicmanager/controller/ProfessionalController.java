@@ -5,6 +5,7 @@ import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.patient.PatientResp
 import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.professional.ProfessionalDTO;
 import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.professional.ProfessionalResponseDTO;
 import br.edu.ifrs.canoas.clinicmanager.clinicmanager.service.ProfessionalService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,9 +24,24 @@ public class ProfessionalController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @Transactional
     public void register(@RequestBody ProfessionalDTO professionalDto){
         service.registerProfessional(professionalDto);
     }
+
+    @PutMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    @Transactional
+    public void update(@RequestBody ProfessionalDTO professionalDto) throws Exception {
+        service.updateProfessional(professionalDto);
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<ProfessionalDTO> getById(@PathVariable("id") String id) throws Exception {
+        return ResponseEntity.ok(service.findById(id));
+    }
+
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Page<ProfessionalResponseDTO>> getListProfessional(@PageableDefault(sort = "name") Pageable pagination) {

@@ -1,5 +1,6 @@
 package br.edu.ifrs.canoas.clinicmanager.clinicmanager.controller;
 
+import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.patient.PatientDetailedDTO;
 import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.patient.PatientResponseDTO;
 import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.patient.PatientRegisterDTO;
 import br.edu.ifrs.canoas.clinicmanager.clinicmanager.service.PatientService;
@@ -25,6 +26,19 @@ public class PatientController {
     @Transactional
     public void register(@RequestBody PatientRegisterDTO patientDto){
         service.registerPatient(patientDto);
+    }
+
+    @PutMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    @Transactional
+    public void update(@RequestBody PatientDetailedDTO patientDto) throws Exception {
+        service.updatePatient(patientDto);
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<PatientDetailedDTO> getById(@PathVariable("id") String id) throws Exception {
+        return ResponseEntity.ok(service.findById(id));
     }
 
     @GetMapping
