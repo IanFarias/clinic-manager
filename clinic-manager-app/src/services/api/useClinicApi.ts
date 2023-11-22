@@ -17,7 +17,11 @@ export type AuthData = {
 interface IRoutes {
   auth: (authData: AuthData) => Promise<User>;
   registerPatient: (patient: PatientDTO) => Promise<PatientDTO>;
+  updatePatient: (patient: PatientDTO) => Promise<PatientDTO>;
   registerProfessional: (
+    professional: ProfessionalDTO
+  ) => Promise<ProfessionalDTO>;
+  updateProfessional: (
     professional: ProfessionalDTO
   ) => Promise<ProfessionalDTO>;
   getPatients: (page?: number, size?: number) => Promise<Page<PatientListDTO>>;
@@ -29,6 +33,8 @@ interface IRoutes {
   getNumberOfProfessionals: () => Promise<number>;
   getNumberOfPatients: () => Promise<number>;
   getNumberOfAppointments: () => Promise<number>;
+  findPatientById: (id: string) => Promise<PatientDTO>;
+  findProfessionalById: (id: string) => Promise<ProfessionalDTO>;
 }
 
 export const useClinicApi = () => {
@@ -53,6 +59,12 @@ export const useClinicApi = () => {
 
   async function registerProfessional(professional: ProfessionalDTO) {
     return await httpInstance.post<ProfessionalDTO>(
+      '/professional',
+      professional
+    );
+  }
+  async function updateProfessional(professional: ProfessionalDTO) {
+    return await httpInstance.update<ProfessionalDTO>(
       '/professional',
       professional
     );
@@ -88,6 +100,16 @@ export const useClinicApi = () => {
     return await httpInstance.get<number>('/appointment/getQuantity');
   }
 
+  async function findPatientById(id: string) {
+    return await httpInstance.get<PatientDTO>(`/patient/${id}`);
+  }
+  async function findProfessionalById(id: string) {
+    return await httpInstance.get<ProfessionalDTO>(`/professional/${id}`);
+  }
+
+  async function updatePatient(patient: PatientDTO) {
+    return await httpInstance.update<PatientDTO>('/patient', patient);
+  }
   return useMemo<IRoutes>(
     () =>
       <IRoutes>{
@@ -100,6 +122,10 @@ export const useClinicApi = () => {
         getNumberOfProfessionals,
         getNumberOfPatients,
         getNumberOfAppointments,
+        findPatientById,
+        updatePatient,
+        updateProfessional,
+        findProfessionalById,
       },
     []
   );

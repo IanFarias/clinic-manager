@@ -99,7 +99,7 @@ const GuardianModal: React.FC<Props> = ({
       onRequestClose={onClose}
       title="Adicionar Responsável"
     >
-      <S.Form onSubmit={handleSubmit(onSubmit)}>
+      <S.Form>
         <S.Fieldset>
           <legend>
             <VisuallyHidden>Dados do responsável</VisuallyHidden>
@@ -180,7 +180,12 @@ const GuardianModal: React.FC<Props> = ({
             <InputError>{formErrors['isMain'][errors.isMain?.type]}</InputError>
           )}
         </S.RadioButtonFieldset>
-        <Button className="button-add " type="submit" variant="primary">
+        <Button
+          className="button-add "
+          type="button"
+          variant="primary"
+          onClick={handleSubmit(onSubmit)}
+        >
           Adicionar
         </Button>
       </S.Form>

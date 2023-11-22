@@ -1,9 +1,5 @@
 package br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.appointment;
 
-import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.patient.Patient;
-import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.patient.PatientResponseDTO;
-import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.professional.Professional;
-import br.edu.ifrs.canoas.clinicmanager.clinicmanager.domain.professional.ProfessionalDTO;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

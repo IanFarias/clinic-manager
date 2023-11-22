@@ -1,6 +1,7 @@
 import { Guardian } from '../pages/RegisterPatient';
 
 export type PatientDTO = {
+  id?: string;
   name: string;
   address: {
     street: string;
@@ -15,6 +16,7 @@ export type PatientDTO = {
 };
 
 export type ProfessionalDTO = {
+  id?: string;
   name: string;
   cpf: string;
   crm: string;
